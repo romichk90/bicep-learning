@@ -32,4 +32,10 @@ jobs:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
           # Set this value to true to enable Azure PowerShell Login in addition to Azure CLI login
           enable-AzPSSession: true
-                     
+      - name: Azure PowerShell Action
+        uses: Azure/powershell@v2
+        with:
+          # Specify the Az PowerShell script here.
+          inlineScript: New-AzResourceGroup -Name rg-rkbicep2 -Location NorthEurope -Force
+          # Azure PS version to be used to execute the script, example: 1.8.0, 2.8.0, 3.4.0. To use the latest version, specify "latest".
+          azPSVersion: latest
